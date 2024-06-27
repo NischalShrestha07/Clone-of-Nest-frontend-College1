@@ -1,38 +1,60 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const DisplayBooks = () => {
-
+    const [books, setBooks] = useState([])
     const fetchAllBooks = async () => {
-        const response = await fetch('http:localhost:3000/books');
-        const jsonRespose = await response.json();
-        console.log(jsonRespose);
+        try {
+            const response = await fetch('http:localhost:3000/books');
+            if (!response.ok) {
+                throw new Error(response)
+            }
+
+            const jsonRespose = await response.json();
+            setBooks(jsonRespose);
+            console.log(jsonRespose);
+
+        } catch (error) {
+            console.log(error);
+        }
     }
     useEffect(() => {
         fetchAllBooks();
     }, [])//reloads the data when entered.
     useEffect
     return (
-        <div>
-            <h1>Books</h1>
+        <div className="db-container" >
+            <div className="db-header">
+                <h1>Books</h1>
+                <button onClick={() => Navigate('./books/add')}>+Add New Book</button>
+            </div>
+
             <table border={1}>
                 <thead>
-                    <td>SN</td>
-                    <td>Title</td>
-                    <td>ISBN</td>
-                    <td>Year</td>
-                    <td>Is Available?</td>
+                    <tr>
+
+                        <th>SN</th>
+                        <th>Title</th>
+                        <th>ISBN</th>
+                        <th>Year</th>
+                        <th>Is Available?</th>
+                    </tr>
+
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Book1</td>
-                        <td>nepal</td>
-                        <td>2023</td>
-                        <td>true</td>
-                    </tr>
+                    {books?.map((book) => {
+                        return (
+                            <tr key={book.id}>
+                                <td>{book.id}</td>
+                                <td>{book.title}</td>
+                                <td>{book.isbn}</td>
+                                <td>{book.year}</td>
+                                <td>{book.is_available ? "Yes" : "No"}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
-        </div >
+        </div>
     )
 }
 

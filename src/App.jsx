@@ -1,6 +1,7 @@
 import "./App.css";
 import AddBook from "./components/AddBook";
 import AddUser from "./components/addUser";
+import DisplayBooks from "./components/DisplayBooks";
 import ErrorPage from "./components/ErrorPage";
 import Sidebar from "./components/Sidebar";
 import { Routes, Route, Outlet } from "react-router-dom";
@@ -10,8 +11,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<AddBook />} />
-        <Route path="/books" element={<AddBook />} />
+        <Route path="/books/add" element={<AddBook />} />
         <Route path="/users" element={<AddUser />} />
+        <Route path="/books" element={<DisplayBooks />} />
         {/* TODO: Add user path*/}
 
         {/* 

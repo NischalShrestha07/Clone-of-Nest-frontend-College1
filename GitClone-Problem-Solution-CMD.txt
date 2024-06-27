@@ -1,0 +1,4 @@
+Go to gitbash from powershell
+->>  then enter ls -la command
+->> enter rm -rf .gitbash
+->> paste the git code from chrome.

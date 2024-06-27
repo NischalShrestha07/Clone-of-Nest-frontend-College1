@@ -1,15 +1,17 @@
 import { useState } from "react";
-import "./addBook.css";
-
+import './addBook.css';
 function AddBook() {
-const [title, setTitle] = useState("");
-const [isbn, setIsbn] = useState("");
-const [year, setYear] = useState("");
+  const [title, setTitle] = useState("");
+  const [isbn, setIsbn] = useState("");
+  const [year, setYear] = useState("");
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log({ title, isbn, year });
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ title, isbn, year });
+    fetch("http://localhost:3000", {
+
+    });
+  }
 
 
   return (

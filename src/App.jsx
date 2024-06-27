@@ -1,7 +1,8 @@
 import "./App.css";
-import AddBook from "./components/addBook";
-import ErrorPage from "./components/errorPage";
-import Sidebar from "./components/sidebar";
+import AddBook from "./components/AddBook";
+import AddUser from "./components/addUser";
+import ErrorPage from "./components/ErrorPage";
+import Sidebar from "./components/Sidebar";
 import { Routes, Route, Outlet } from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<AddBook />} />
         <Route path="/books" element={<AddBook />} />
+        <Route path="/users" element={<AddUser />} />
         {/* TODO: Add user path*/}
 
         {/* 
@@ -17,7 +19,7 @@ function App() {
           acts like a catch-all for URLs that we don't have explicit
           routes for.
         */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />//is used when the path is not defined.
       </Route>
     </Routes>
   );
